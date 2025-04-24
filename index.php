@@ -7,30 +7,30 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <html lang="en">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap" rel="stylesheet">
-    <style>
-    </style>
-    <title>Website Task</title>
-</head>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap" rel="stylesheet">
+       
+        <title>Website Task</title>
+        
+    </head>
 
-<body>
+<body id="index">
 
     <div class="main-div">
 
 
         <div class="container">
-            <form class="p-3" action="registration.php">
+            <form class="p-3" action="registration.php" id="login-form"> 
                  <div class="form-field mb-3">
                     <label for="user-id" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="user-id" aria-describedby="emailHelp" name="email">
@@ -38,11 +38,17 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="form-field mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                    <input type="password" class="form-control" id="password" name="password">
                 </div>
+                <div class="form-field mb-3">
+                   
+                    <button type="submit" id="submit">Button</button>
+                </div>
+
+
                 <div class="form-field extra" >
                     <span><a href="forgotPassword.php">Forgot password</a></span>
-                    <span><a href="regestration.php">New User?Welcome</a></span>
+                    <span><a href="./Register/registration.php">New User?Welcome</a></span>
 
                 </div>
 
@@ -60,24 +66,35 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div> -->
 
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-        document.querySelector("form").addEventListener("submit", function (event)){
-            event.preventDefault(); // Stop the form from submitting
-            //check user and password
-            const userId = document.getElementById('user-id').value;
-            console.log(userId);
-            $.ajax({
-                type: 'post',
-                url: 'registration.php',
-                data: {
-                    user_email: Email,
-                    user_password: Password
-                },
+       $('#login-form').on('submit',function login(event) {
+            event.preventDefault();
+        email=$('#user-id').val();
+        password=$('#password').val();
+        $.ajax({
+            type: "post",
+            url: "checkusers.php",
+            data: {
+                useremail:email,
+                userpassword:password,
 
-            });
-            <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+            },
+            success: function(response)
+            {
+                
+                response=JSON.parse(response);
+                if(response.status===true){
+                    location.href="entry.php";
+                }else{
+                    alert("does not exist");
+                }
+
+            }
+        });    
+       });
     </script>
+        
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

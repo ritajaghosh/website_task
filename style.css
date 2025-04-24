@@ -1,19 +1,19 @@
 *{
     
-  font-family: "Cascadia Code", sans-serif;
+  font-family: "cursive";
   font-style: normal;
 }
 
 body {
     height: 100vh;
     width: 100vw;
-    background-color: black !important;
-    background-image: url(assets/ritaja1.jpg);
+    background-image: url(assets/img.png);
     background-repeat: no-repeat;
     background-position: 10% 0;
     background-size: cover;
-    backdrop-filter: blur(5px);
+    /* backdrop-filter: blur(5px); */
 }
+   
 
 .main-div {
     height: 100vh;
@@ -30,7 +30,7 @@ body {
     height: 80vh;
     width: 40vw;
     position: absolute;
-    background-color: rgba(208, 82, 62, 0.663);
+    background-color: rgba(208, 81, 62, 0.277);
     border-top-left-radius: 5%;
     border-bottom-left-radius: 5%;
     backdrop-filter: blur(20px);
@@ -78,3 +78,5 @@ form {
     align-items:center;
 
 }
+
+    
