@@ -47,7 +47,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
                 <div class="form-field extra" >
-                    <span><a href="forgotPassword.php">Forgot password</a></span>
+                    <span><a href="./forgotpassword/forgotpassword.php">Forgot password?</a></span>
                     <span><a href="./Register/registration.php">New User?Welcome</a></span>
 
                 </div>

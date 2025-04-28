@@ -13,6 +13,7 @@ body, html {
 
   .container-fluid {
     height:100vh;
+    width: 100vw;
   }
 
   .bg-image {
@@ -28,13 +29,14 @@ body, html {
 
   .form-container {
     background-color: #00000070;
-    padding: 3rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+    /* padding: 3rem; */
+    height: 100vh;
     border-radius: 0.5rem 0 0 0.5rem;
+    overflow:scroll;
+
+  }
+  .form-container::-webkit-scrollbar{
+    display: none;
   }
 
   .btn-gradient {
@@ -70,4 +72,5 @@ body, html {
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        /* height: 100vh; */
   }
