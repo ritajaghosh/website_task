@@ -102,7 +102,7 @@
             
           },
           success: function (response) {
-            alert(response);
+           alert("Welcome");
           },
           error: function (xhr, status, error) {
             console.error(error);

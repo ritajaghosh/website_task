@@ -66,21 +66,22 @@
             event.preventDefault();
         email=$('#user-id').val();
         password=$('#password').val();
-        alert("Hi");
+        // alert("Hi");
         $.ajax({
             type: "post",
             url: "checkusers.php",
             data: {
                 useremail:email,
-                userpassword:password,
+                userpassword:password
 
             },
             success: function(response)
             {
-                // alert(response);
+                alert(response);
                 
                 response=JSON.parse(response);
                 if(response.status===true){
+                    alert("hi");
                     location.href="entry.php";
                 }else{
                     alert("does not exist");
