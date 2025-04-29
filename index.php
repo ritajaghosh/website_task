@@ -1,10 +1,4 @@
-<?php
-require_once 'config.php';
-$stmt = $pdo->prepare('select * from users');
-$stmt->execute();
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// print_r($users);
-?>
+
 <html lang="en">
 
     <head>
@@ -30,7 +24,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
         <div class="container">
-            <form class="p-3" action="registration.php" id="login-form"> 
+            <form class="p-3" id="login-form"> 
                  <div class="form-field mb-3">
                     <label for="user-id" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="user-id" aria-describedby="emailHelp" name="email">
@@ -42,7 +36,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="form-field mb-3">
                    
-                    <button type="submit" id="submit">Button</button>
+                    <button type="submit" id="submit">Login</button>
                 </div>
 
 
@@ -68,10 +62,11 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-       $('#login-form').on('submit',function login(event) {
+       $('#login-form').on('submit',function (event) {
             event.preventDefault();
         email=$('#user-id').val();
         password=$('#password').val();
+        alert("Hi");
         $.ajax({
             type: "post",
             url: "checkusers.php",
@@ -82,6 +77,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             },
             success: function(response)
             {
+                // alert(response);
                 
                 response=JSON.parse(response);
                 if(response.status===true){

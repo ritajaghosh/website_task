@@ -85,32 +85,37 @@
       let email = $("#email").val();
       let username = $("#username").val();
       let password = $("#password").val();
-      let repassword = $("#rpassword").val();
-      console.log(name, dob, cname, schname, email, username, password, repassword);
-      $.ajax({
-        type: "post",
-        url: "register.php",
-        data: {
-          name: name,
-          dob: dob,
-          cname: cname,
-          schname: schname,
-          email: email,
-          username: username,
-          password: password
+      let rpassword = $("#rpassword").val();
+      console.log(name, dob, cname, schname, email, username, password, rpassword);
+      if (password == rpassword) {
+        $.ajax({
+          type: "post",
+          url: "register.php",
+          data: {
+            name: name,
+            dob: dob,
+            cname: cname,
+            schname: schname,
+            email: email,
+            username: username,
+            password: password,
+            
+          },
+          success: function (response) {
+            alert(response);
+          },
+          error: function (xhr, status, error) {
+            console.error(error);
 
-        },
-        success: function (response) {
-          alert(response);
-        },
-        error: function (xhr, status, error) {
-          console.error(error);
-        }
+          }
 
-      });
-    }
-    )
-    
+        });
+      }else{
+        alert("password does not match");
+      }
+    });
+
+
   </script>
 </body>
 
