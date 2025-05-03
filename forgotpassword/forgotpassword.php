@@ -105,7 +105,13 @@
             confirm: confirm,
           },
           success: function (response) {
-            console.log(response);
+            // console.log(response);
+           
+            if(response['status']){
+                location.href="./"
+            }else{
+              alert("wrong user");
+            }
           },
           error: function (xhr, status, error) {
             console.log(error);
